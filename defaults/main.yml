@@ -1,6 +1,6 @@
 ---
 install_jdk: true
-openjdk_version: 1.8.0
+openjdk_version: 8
 
 bamboo_agent_remote: false
 

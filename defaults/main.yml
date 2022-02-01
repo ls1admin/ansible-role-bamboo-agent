@@ -6,8 +6,8 @@ bamboo_agent_remote: false
 
 bamboo_master_version: ""
 bamboo_master_fqdn: ""
-bamboo_master_https: ""
-bamboo_master_port: ""
+bamboo_master_https: true
+bamboo_master_port: 443
 bamboo_master_user: bamboo
 
 bamboo_agent_user: bambooagent

@@ -6,7 +6,7 @@ After=syslog.target network.target
 Environment=PATH=/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin{% if bamboo_agent_capabilities is defined %}{% for item in bamboo_agent_capabilities %}{% if item.binary_path is defined %}:{{ item.binary_path }}{% endif %}{% endfor %}{% endif %}
 
 Environment=JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
-{%if http_proxy is defined and https_proxy is defined %}
+{%if http_proxy is defined and http_proxy is not none and https_proxy is defined and https_proxy is not none %}
 Environment="JAVA_OPTS=-Dhttp.nonProxyHosts={{ no_proxy | default([]) | join("\|") }} -Dhttp.proxyHost={{ http_proxy | default('') }} -Dhttps.proxyHost={{ https_proxy | default('') }} -Dhttp.proxyUser={{ http_proxy_user | default('') }} -Dhttp.proxyPassword={{ http_proxy_password | default('') }}"
 Environment=http_proxy=http://{% if http_proxy_user is defined and http_proxy_password is defined %}{{ http_proxy_user }}:{{ http_proxy_password }}@{% endif %}{{ http_proxy }}
 Environment=https_proxy=http://{% if http_proxy_user is defined and http_proxy_password is defined %}{{ http_proxy_user }}:{{ http_proxy_password }}@{% endif %}{{ https_proxy }}
